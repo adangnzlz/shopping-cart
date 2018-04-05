@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('redux-angular App', () => {
+describe('redux-angular2 App', () => {
   let page: AppPage;
 
   beforeEach(() => {

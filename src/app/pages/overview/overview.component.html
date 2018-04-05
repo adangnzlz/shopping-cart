@@ -1,5 +1,5 @@
 <div class="overview-container">
-    <div *ngIf="post | async as p">
+    <!-- <div *ngIf="post | async as p">
         <h2>{{ p.text }}</h2>
         <h4>Votes: {{ p.likes }}</h4>
         <button (click)="upvote()">Upvote</button>
@@ -7,5 +7,21 @@
         <button (click)="resetPost()">Reset</button>
         <input [(ngModel)]="text">
         <button (click)="editText()">Change Title</button>
-    </div>
+    </div> -->
+
+
+
+    <section class="gallery">
+        <h2>Movies</h2>
+        <img src="https://source.unsplash.com/random/201x201" alt="">
+        <img src="https://source.unsplash.com/random/202x202" alt="">
+        <img src="https://source.unsplash.com/random/203x203" alt="">
+        <img src="https://source.unsplash.com/random/204x204" alt="">
+        <img src="https://source.unsplash.com/random/205x205" alt="">
+        <img src="https://source.unsplash.com/random/206x206" alt="">
+        <img src="https://source.unsplash.com/random/207x207" alt="">
+        <img src="https://source.unsplash.com/random/207x208" alt="">
+        <img src="https://source.unsplash.com/random/207x209" alt="">
+        <img src="https://source.unsplash.com/random/207x210" alt="">
+    </section>
 </div>

@@ -1,8 +1,8 @@
-import {FormsModule} from '@angular/forms';
-import {SpinnerModule} from 'angular2-spinner';
+import { FormsModule } from '@angular/forms';
+import { SpinnerModule } from 'angular2-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OverviewComponent } from './pages/overview/overview.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -18,6 +18,9 @@ import { FooterComponent } from './layouts/footer/footer.component';
 import { MenuComponent } from './layouts/menu/menu.component';
 import { LoaderService } from './services/loader.service';
 import { postReducer } from './common/reducers/post.reducers';
+import { ConfigurableRESTService } from './services/common/configurable.rest.service';
+import { HeaderInterceptor } from './services/common/http.interceptor';
+import { DiscoverService } from './services/discover.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,16 @@ import { postReducer } from './common/reducers/post.reducers';
     HttpClientModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [LoaderService, Store],
+  providers: [
+    LoaderService,
+    ConfigurableRESTService,
+    DiscoverService,
+    Store,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HeaderInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
