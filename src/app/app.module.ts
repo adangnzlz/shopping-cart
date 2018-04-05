@@ -21,6 +21,8 @@ import { postReducer } from './common/reducers/post.reducers';
 import { ConfigurableRESTService } from './services/common/configurable.rest.service';
 import { HeaderInterceptor } from './services/common/http.interceptor';
 import { DiscoverService } from './services/discover.service';
+import { ImageApiPipe } from './pipes/imageapi.pipe';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { DiscoverService } from './services/discover.service';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
+    ImageApiPipe,
     OverviewComponent
   ],
   imports: [

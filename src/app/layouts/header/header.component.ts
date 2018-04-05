@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
 
 
 @Component({
@@ -16,6 +16,10 @@ export class HeaderComponent implements OnInit {
     ngOnInit() {
     }
 
+    // sample host listener
+    // @HostListener('mouseover') onMouseOver() {
+    //     console.log('hover');
+    // }
 
     onToggle() {
         this.toggle.emit();

@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { fadeAnimation } from './animations/fade-in.animation';
 
 import { Observable } from 'rxjs/Observable';
 import { NavigationEnd, Router } from '@angular/router';
 import { LoaderService } from './services/loader.service';
+import { log } from './decorators/log.decorator';
+import { NgLog } from './decorators/nglog.decorator';
 
 
 @Component({
@@ -12,8 +14,10 @@ import { LoaderService } from './services/loader.service';
   animations: [fadeAnimation],
   styleUrls: ['./app.component.scss']
 })
+@NgLog()
+export class AppComponent implements OnInit, AfterViewInit {
 
-export class AppComponent implements OnInit {
+
 
   expanded = false;
   objLoaderStatus: boolean;
@@ -28,7 +32,7 @@ export class AppComponent implements OnInit {
     });
   }
 
-
+  // @log()
   ngOnInit(): void {
     this.loaderService.loaderStatus.subscribe((val: boolean) => {
       this.objLoaderStatus = val;
@@ -46,4 +50,5 @@ export class AppComponent implements OnInit {
     return outlet.isActivated ? outlet.activatedRoute : '';
   }
 
+  ngAfterViewInit(): void {}
 }

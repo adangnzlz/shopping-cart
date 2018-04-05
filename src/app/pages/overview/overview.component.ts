@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { EditText, Reset, Upvote, Downvote } from '../../common/actions/post.actions';
@@ -6,6 +6,9 @@ import { Post } from '../../common/models/post.model';
 import { AppState } from '../../common/app.state';
 import { endpoints } from '../../../environments/globar.vars';
 import { DiscoverService } from '../../services/discover.service';
+import { NgLog } from '../../decorators/nglog.decorator';
+import { Movie } from '../../common/models/movie.model';
+import { Dataset } from '../../common/models/dataset.model';
 
 
 
@@ -18,18 +21,20 @@ import { DiscoverService } from '../../services/discover.service';
     { provide: 'ENDPOINT', useValue: endpoints.discover }
   ]
 })
+@NgLog()
 export class OverviewComponent {
 
+  popularMovies: Dataset = new Dataset();
   post: Observable<Post>;
 
-  text: string; /// form input val
+  text: string;
 
   constructor(private store: Store<AppState>, private discoverService: DiscoverService) {
     this.post = this.store.select('post');
-    this.discoverService.get().subscribe(result => {
-      console.log(result);
-    });
+    this.getPopularMovies();
   }
+
+
 
   editText() {
     this.store.dispatch(new EditText(this.text));
@@ -46,4 +51,12 @@ export class OverviewComponent {
   downvote() {
     this.store.dispatch(new Downvote());
   }
+
+  getPopularMovies() {
+    this.discoverService.get().subscribe((result: Dataset) => {
+      this.popularMovies = result;
+    });
+  }
+
+
 }
