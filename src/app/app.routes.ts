@@ -1,7 +1,7 @@
 
 
 import { Routes } from '@angular/router';
-import { OverviewComponent } from './pages/overview/overview.component';
+import { OverviewComponent } from './featured-modules/home-module/pages/overview/overview.component';
 
 
 

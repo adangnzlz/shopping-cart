@@ -1,12 +1,12 @@
 import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
-import { fadeAnimation } from './animations/fade-in.animation';
 
 import { Observable } from 'rxjs/Observable';
 import { NavigationEnd, Router } from '@angular/router';
-import { LoaderService } from './services/loader.service';
-import { log } from './decorators/log.decorator';
-import { NgLog } from './decorators/nglog.decorator';
-
+import { LoaderService } from './core-module/services/loader.service';
+import { NgLog } from './shared-modules/common-util/decorators/nglog.decorator';
+import { log } from './shared-modules/common-util/decorators/log.decorator';
+import { environment } from '../environments/environment';
+import { fadeAnimation } from './shared-modules/common-util/animations';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,8 @@ import { NgLog } from './decorators/nglog.decorator';
   animations: [fadeAnimation],
   styleUrls: ['./app.component.scss']
 })
-@NgLog()
+
+@NgLog(environment)
 export class AppComponent implements OnInit, AfterViewInit {
 
 
@@ -22,7 +23,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   expanded = false;
   objLoaderStatus: boolean;
 
-  constructor( router: Router, private loaderService: LoaderService) {
+  constructor(router: Router, private loaderService: LoaderService) {
 
     this.objLoaderStatus = false;
     router.events.subscribe((val) => {
@@ -32,7 +33,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
-  // @log()
+  @log()
   ngOnInit(): void {
     this.loaderService.loaderStatus.subscribe((val: boolean) => {
       this.objLoaderStatus = val;
@@ -50,5 +51,5 @@ export class AppComponent implements OnInit, AfterViewInit {
     return outlet.isActivated ? outlet.activatedRoute : '';
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void { }
 }

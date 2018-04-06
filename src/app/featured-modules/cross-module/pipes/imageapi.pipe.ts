@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { baseApiUrlImages } from '../../environments/globar.vars';
+import { baseApiUrlImages } from '../../../../environments/globar.vars';
 @Pipe({
     name: 'imageApi'
 })

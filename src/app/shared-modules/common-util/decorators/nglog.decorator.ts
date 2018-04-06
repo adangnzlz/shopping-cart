@@ -1,6 +1,4 @@
-import { environment } from '../../environments/environment';
-
-export function NgLog(): ClassDecorator {
+export function NgLog(environment): ClassDecorator {
     return function (constructor: any) {
         if (!environment.production) {
             // You can add/remove events for your needs
@@ -23,3 +21,4 @@ export function NgLog(): ClassDecorator {
         }
     };
 }
+

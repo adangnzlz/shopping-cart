@@ -1,4 +1,8 @@
 import { Component, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
+import { ShopCart } from '../../model/models/shopcart.model';
+import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
+import { AppState } from '../../model/app.state';
 
 
 @Component({
@@ -10,7 +14,10 @@ export class HeaderComponent implements OnInit {
 
     @Output() toggle: EventEmitter<any>;
 
-    constructor() {
+    shopcart: Observable<ShopCart>;
+
+    constructor(private store: Store<AppState>) {
+        this.shopcart = this.store.select('shopcart');
         this.toggle = new EventEmitter();
     }
     ngOnInit() {

@@ -1,0 +1,18 @@
+<div class="overview-container">
+
+    <section class="gallery">
+        <h1>Popular movies</h1>
+        <!-- <div class="movie" (click)="addItem(movie.id)" *ngFor="let movie of popularMovies.results">
+            <img [src]="movie.poster_path | imageApi" alt="">
+        </div> -->
+        <div class="movie" (click)="addItem(movie.id)" *ngFor="let movie of popularMovies.results">
+            <img [src]="movie.poster_path | imageApi" alt="">
+            <div class="middle">
+                <div class="title" [innerText]="movie.title"></div>
+                <div class="buttons">
+                    <button class="btn btn-sm">Añadir</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,16 +1,16 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { baseApiUrl, apiKey } from '../../../environments/globar.vars';
 import { HttpClient } from '@angular/common/http';
+import { baseApiUrl, apiKey } from '../../../../environments/globar.vars';
 
 @Injectable()
 export class ConfigurableRESTService {
 
     private configurableUrl: string;
 
-    constructor(private http: HttpClient, private endpoint: string) {
-        this.configurableUrl = baseApiUrl + endpoint + apiKey;
+    constructor(private http: HttpClient, @Inject('ENDPOINT') public url: string) {
+        this.configurableUrl = baseApiUrl + url + apiKey;
     }
 
     get(): Observable<any> {
