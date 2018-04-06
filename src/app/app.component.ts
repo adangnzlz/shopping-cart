@@ -19,11 +19,8 @@ import { fadeAnimation } from './shared-modules/common-util/animations';
 export class AppComponent implements OnInit {
 
   expanded = false;
-  objLoaderStatus: boolean;
-
+  objLoaderStatus = false;
   constructor(router: Router, private loaderService: LoaderService) {
-
-    this.objLoaderStatus = false;
     router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
         window.scrollTo(0, 0);

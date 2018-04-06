@@ -1,15 +1,20 @@
-<div class="movie">
+<div class="movie" [ngClass]="{'active' : _active}">
 
-  <img [src]="movie[template] | imageApi" alt="">
-
-  <div class="middle">
-    <div class="title" [innerText]="movie.title"></div>
-    <div class="overview" [innerText]="movie.overview"></div>
+  <img [hidden]="_active && !loaded" [src]="movie[template] | imageApi" alt="">
+  <div class="spinner" *ngIf="_active">
+    <img [@fade]="fade" [hidden]="!loaded" [src]="movie.backdrop_path  | imageApi:'/w1280'" (load)="load()" alt="">
   </div>
-  <div class="buttons">
-    <button (click)="removeItem(movie.id)" class="btn danger">
-      <i class="fa fa-trash"></i>Remove</button>
-    <button (click)="addItem(movie.id)" class="btn">
-      <i class="fa fa-shopping-cart"></i>Add</button>
+  <div [hidden]="_active && !loaded">
+    <div class="middle">
+      <div class="title" [innerText]="movie.title"></div>
+      <div class="overview" [innerText]="movie.overview"></div>
+    </div>
+    <div class="buttons">
+      <button (click)="removeItem(movie.id)" appClickStopPropagation class="btn danger">
+        <i class="fa fa-trash"></i>Remove</button>
+      <button (click)="addItem(movie.id)" appClickStopPropagation class="btn">
+        <i class="fa fa-shopping-cart"></i>Add</button>
+    </div>
+      <p *ngFor="let companie of movie.production_companies" [innerText]="companie"></p>
   </div>
 </div>

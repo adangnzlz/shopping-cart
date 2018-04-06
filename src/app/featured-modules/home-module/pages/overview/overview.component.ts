@@ -22,19 +22,11 @@ export class OverviewComponent {
   popularMovies: Dataset = new Dataset();
   shopcart: Observable<ShopCart>;
 
-  text: string;
+  indexActive: Number;
 
   constructor(private store: Store<AppState>, private discoverService: DiscoverService) {
     this.shopcart = this.store.select('shopcart');
     this.getPopularMovies();
-  }
-
-  addItem(id: number) {
-    this.store.dispatch(new AddItem(id));
-  }
-
-  removeItem(id: number) {
-    this.store.dispatch(new RemoveItem(id));
   }
 
   getPopularMovies() {
@@ -43,5 +35,18 @@ export class OverviewComponent {
     });
   }
 
+  selectMovie(i, el) {
+    if (window.innerWidth >= 768) {
+      this.indexActive === i ? this.indexActive = null : this.indexActive = i;
+      el.scrollIntoView();
+    }
+  }
 
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    if (window.innerWidth < 768) {
+      this.indexActive = null;
+    }
+  }
 }

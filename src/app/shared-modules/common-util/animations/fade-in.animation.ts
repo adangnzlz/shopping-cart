@@ -1,6 +1,6 @@
 // fade.animation.ts
 
-import { trigger, animate, transition, style, query } from '@angular/animations';
+import { trigger, animate, transition, style, query, state } from '@angular/animations';
 
 export const fadeAnimation =
 
@@ -34,3 +34,14 @@ export const fadeAnimation =
         ])
 
     ]);
+
+
+export const fade = [
+    trigger('fade', [
+        state('in', style({ 'opacity': '1' })),
+        state('out', style({ 'opacity': '0' })),
+        transition('* <=> *', [
+            animate(300)
+        ])
+    ])
+];

@@ -1,6 +1,7 @@
 <div class="overview-container">
-    <section class="gallery">
-        <h1>Popular movies</h1>
-        <app-movie *ngFor="let movie of popularMovies.results" [template]="'poster_path'" [movie]="movie"></app-movie>
+    <h1 #title>Popular movies</h1>
+    <section #gallery class="gallery">
+        <app-movie (click)="selectMovie(i, title)" [ngClass]="{'active' : i === indexActive}" *ngFor="let movie of popularMovies.results; let i = index"
+            [template]="'poster_path'" [active]="indexActive === i" [movie]="movie"></app-movie>
     </section>
 </div>
