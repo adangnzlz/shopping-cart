@@ -9,7 +9,7 @@
             font-size: 2rem;
             padding: 5px 20px;
             outline: none;
-            color: $primary;
+            color: $font;
             cursor: pointer;
             a {
                 font-weight: normal;
@@ -23,17 +23,18 @@
                 height: 15px;
                 width: 15px;
                 border-radius: 7.5px;
-                background-color: #9cd64a;
+                background-color: $secondary;
                 transition: all 0.3s;
                 transform: scale(0);
             }
-            &:hover, &.active {
+            &:hover,
+            &.active {
                 &:before {
                     transform: scale(1);
                 }
             }
             &.active {
-                a{
+                a {
                     font-weight: bolder;
                 }
             }

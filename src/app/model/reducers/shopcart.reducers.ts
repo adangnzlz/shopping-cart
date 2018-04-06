@@ -27,7 +27,7 @@ export function shopcartReducer(state: ShopCart = defaultState, action: Action) 
                 items: state.items
             });
         case ShopCartActions.REMOVE_ITEM:
-            const shopCartAfterRemove = state.items.filter(item => item !== action.payload);
+            const shopCartAfterRemove = removeFirstOcurrence(state.items, action.payload);
             return newState(state, {
                 total: shopCartAfterRemove.length,
                 items: shopCartAfterRemove
@@ -37,3 +37,15 @@ export function shopcartReducer(state: ShopCart = defaultState, action: Action) 
 
     }
 }
+
+function removeFirstOcurrence(items, id) {
+    let removed = 0;
+    const shopCartAfterRemove = items.filter(item => {
+        if (item === id) {
+            removed++;
+        }
+        return (item !== id || removed > 1);
+    });
+    return shopCartAfterRemove;
+}
+

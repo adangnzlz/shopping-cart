@@ -16,9 +16,7 @@ import { fadeAnimation } from './shared-modules/common-util/animations';
 })
 
 @NgLog(environment)
-export class AppComponent implements OnInit, AfterViewInit {
-
-
+export class AppComponent implements OnInit {
 
   expanded = false;
   objLoaderStatus: boolean;
@@ -50,6 +48,4 @@ export class AppComponent implements OnInit, AfterViewInit {
   getRouterOutletState(outlet) {
     return outlet.isActivated ? outlet.activatedRoute : '';
   }
-
-  ngAfterViewInit(): void { }
 }

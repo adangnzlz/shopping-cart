@@ -24,7 +24,10 @@ import { shopcartReducer } from './model/reducers/shopcart.reducers';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    MenuComponent,
   ],
   imports: [
     CoreModule,
