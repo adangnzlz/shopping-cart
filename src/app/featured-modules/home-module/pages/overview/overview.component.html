@@ -1,21 +1,6 @@
 <div class="overview-container">
-
     <section class="gallery">
         <h1>Popular movies</h1>
-        <!-- <div class="movie" (click)="addItem(movie.id)" *ngFor="let movie of popularMovies.results">
-            <img [src]="movie.poster_path | imageApi" alt="">
-        </div> -->
-        <div class="movie" *ngFor="let movie of popularMovies.results">
-            <img [src]="movie.poster_path | imageApi" alt="">
-            <div class="middle">
-                <div class="title" [innerText]="movie.title"></div>
-                <div class="overview" [innerText]="movie.overview"></div>
-            </div>
-            <div class="buttons">
-                <button (click)="removeItem(movie.id)" class="btn danger"><i class="fa fa-trash"></i>Remove</button>
-                <button (click)="addItem(movie.id)" class="btn"><i class="fa fa-shopping-cart"></i>Add</button>
-            </div>
-        </div>
-        <app-movie></app-movie>
+        <app-movie *ngFor="let movie of popularMovies.results" [template]="'poster_path'" [movie]="movie"></app-movie>
     </section>
 </div>

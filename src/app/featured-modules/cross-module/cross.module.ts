@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ImageApiPipe } from './pipes/imageapi.pipe';
 import { MovieComponent } from './components/movie/movie.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -9,8 +10,9 @@ import { MovieComponent } from './components/movie/movie.component';
         MovieComponent
     ],
     imports: [
+        CommonModule
     ],
     exports: [ImageApiPipe, MovieComponent]
 })
-export class CrossModule {}
+export class CrossModule { }
 

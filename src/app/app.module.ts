@@ -20,6 +20,7 @@ import { CommonUtilModule } from './shared-modules/common-util/common-util.modul
 import { CrossModule } from './featured-modules/cross-module/cross.module';
 import { HomeModule } from './featured-modules/home-module/home.module';
 import { shopcartReducer } from './model/reducers/shopcart.reducers';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({

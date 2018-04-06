@@ -1,3 +1,15 @@
-<p>
-  movie works!
-</p>
+<div class="movie">
+
+  <img [src]="movie[template] | imageApi" alt="">
+
+  <div class="middle">
+    <div class="title" [innerText]="movie.title"></div>
+    <div class="overview" [innerText]="movie.overview"></div>
+  </div>
+  <div class="buttons">
+    <button (click)="removeItem(movie.id)" class="btn danger">
+      <i class="fa fa-trash"></i>Remove</button>
+    <button (click)="addItem(movie.id)" class="btn">
+      <i class="fa fa-shopping-cart"></i>Add</button>
+  </div>
+</div>
